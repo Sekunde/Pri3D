@@ -1,0 +1,18 @@
+from PIL import Image
+import numpy as np
+import os
+
+
+writelines = []
+lines = open('imagenet_grayscale.txt').readlines()
+
+path = '/datasets01/imagenet_full_size/061417/train/'
+for idx, classid in enumerate(os.listdir(path)):
+    print('{}/1000'.format(idx), end='\r')
+    for filename in os.listdir(os.path.join(path, classid)):
+        if filename + '\n' in lines:
+            continue
+        writelines.append(os.path.join(classid, filename) + '\n')
+
+open('imagenet_filelist.txt', 'w').writelines(writelines)
+

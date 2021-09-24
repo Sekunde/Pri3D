@@ -1,0 +1,89 @@
+################################################################################
+# training parameters
+################################################################################
+train:
+  phase: train
+  is_train: True
+  exp_name: test
+  log_dir: test
+  batch_size: 8     # batch size
+  report_batch: 10        # every x batches, report loss
+  report_epoch: 5        # every x epochs, report validation set
+  workers: 2            # number of threads to get data
+  write_result: False
+
+optimizer:
+  optimizer: Adam
+  lr: 0.001
+  sgd_momentum: 0.9
+  sgd_dampening: 0.1
+  adam_beta1: 0.9
+  adam_beta2: 0.999
+  weight_decay: 0.000
+  bn_momentum: 0.02
+  accumulate_step: 1
+
+# Scheduler
+scheduler:
+  scheduler: MultiStepLR # PolyLR, MultiStepLR, StepLR
+  max_epochs: 180
+  decay_epochs: [80, 120, 160]
+  lr_decay: 0.1
+  poly_power: 0.9
+
+distributed:
+  num_gpus: 1
+
+################################################################################
+# backbone parameters
+################################################################################
+pretrain:
+  model: RGBDepth
+  nceT: 0.4
+  npos: 2.0 
+  backbone: False
+  weights:
+  pretrained: True
+  depth: False
+  save_feature: False
+  view_invariant: True
+  geometric_prior: True
+  sample_points: 1024
+  thresh: 0.05
+
+################################################################################
+# dataset parameters
+################################################################################
+dataset:
+  name: ScanNet
+  size: [240, 320]
+  chunk: False
+  path: /rhome/jhou/data/dataset/scannet/partial_frames/
+  pointcloud_path: /rhome/jhou/data/dataset/scannet/pointcloud/
+
+################################################################################
+# slurm parameters
+################################################################################
+defaults:
+  - hydra/launcher: submitit_slurm
+  - hydra/hydra_logging: colorlog
+
+hydra:
+  run:
+    dir: ${train.log_dir}
+  sweep:
+    dir: ${train.log_dir}
+  launcher:
+    partition: debug
+    submitit_folder: ${hydra.sweep.dir}/.submitit/%j
+    name: ${hydra.job.name}
+    timeout_min: 4320
+    cpus_per_task: 10
+    gpus_per_node: ${distributed.num_gpus}
+    tasks_per_node: 1
+    mem_gb: 256
+    nodes: 1
+    constraint: 
+    exclude: seti
+    comment: CriticalExp
+    max_num_timeout: 3

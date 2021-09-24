@@ -1,0 +1,11 @@
+# Ignore everything in this directory
+data/scannet_frames_25k
+data/eachfeature
+data/featidx2
+3d-2d-distillation/exp/scannet/pspnet50/model/
+3d-2d-distillation/initmodel/
+# Except this file
+!.gitignore
+*.pyc
+*.o
+*.so

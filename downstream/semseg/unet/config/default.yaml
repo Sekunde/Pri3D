@@ -1,0 +1,83 @@
+################################################################################
+# training parameters
+################################################################################
+train:
+  phase: train
+  is_train: True
+  exp_name: test
+  log_dir: test
+  batch_size: 8     # batch size
+  report_batch: 10        # every x batches, report loss
+  report_epoch: 5        # every x epochs, report validation set
+  workers: 2            # number of threads to get data
+  write_result: False
+
+optimizer:
+  optimizer: Adam
+  lr: 0.001
+  sgd_momentum: 0.9
+  sgd_dampening: 0.1
+  adam_beta1: 0.9
+  adam_beta2: 0.999
+  weight_decay: 0.000
+  bn_momentum: 0.02
+
+# Scheduler
+scheduler:
+  scheduler: MultiStepLR # PolyLR, MultiStepLR, StepLR
+  max_epochs: 180
+  decay_epochs: [80, 120, 160]
+  lr_decay: 0.1
+  step_size: 80
+  poly_power: 0.9
+
+distributed:
+  num_gpus: 1
+
+################################################################################
+# backbone parameters
+################################################################################
+finetune:
+  model: 
+  pretrain:
+  backbone:  
+
+################################################################################
+# dataset parameters
+################################################################################
+dataset:
+  name: ScanNetDataset
+  path: '/rhome/jhou/data/dataset/scannet/rgbd/'
+  size: [240,320]
+  augment: False
+  chunk: False
+  npoints: 80000
+  resize: True
+  colorjitter: False
+  random_crop: False
+
+################################################################################
+# slurm parameters
+################################################################################
+defaults:
+  - hydra/launcher: submitit_slurm
+  - hydra/hydra_logging: colorlog
+
+hydra:
+  run:
+    dir: ${train.log_dir}
+  sweep:
+    dir: ${train.log_dir}
+  launcher:
+    partition: debug
+    submitit_folder: ${hydra.sweep.dir}/.submitit/%j
+    name: ${hydra.job.name}
+    timeout_min: 4320
+    cpus_per_task: 8
+    gpus_per_node: ${distributed.num_gpus}
+    exclude: moria
+    tasks_per_node: 1
+    mem_gb: 32
+    nodes: 1
+    comment: CriticalExp
+    max_num_timeout: 3

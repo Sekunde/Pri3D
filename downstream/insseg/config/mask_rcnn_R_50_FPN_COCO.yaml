@@ -1,0 +1,30 @@
+_BASE_: "Base-RCNN-FPN.yaml"
+MODEL:
+  PIXEL_MEAN: [123.675, 116.280, 103.530]
+  PIXEL_STD: [58.395, 57.120, 57.375]
+  MASK_ON: True
+  WEIGHTS: "detectron2://ImageNetPretrained/MSRA/R-50.pkl"
+  BACKBONE:
+    FREEZE_AT: 0
+  RESNETS:
+    DEPTH: 50
+    NORM: "SyncBN"
+    STRIDE_IN_1X1: False
+  FPN:
+    NORM: "SyncBN"
+  ROI_BOX_HEAD:
+    NAME: "FastRCNNConvFCHead"
+    NUM_CONV: 4
+    NUM_FC: 1
+    NORM: "SyncBN"
+  ROI_MASK_HEAD:
+    NORM: "SyncBN"
+TEST:
+  EVAL_PERIOD: 10000
+  PRECISE_BN:
+    ENABLED: True
+INPUT:
+  FORMAT: "RGB"
+SOLVER:
+  STEPS: (60000, 80000)
+  MAX_ITER: 90000

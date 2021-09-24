@@ -1,0 +1,67 @@
+################################################################################
+# training parameters
+################################################################################
+train:
+  arch: psp
+  log_dir: 'test'
+  layers: 50
+  sync_bn: True  # adopt sync_bn or not
+  train_h: 240
+  train_w: 320
+  scale_min: 0.5  # minimum random scale
+  scale_max: 2.0  # maximum random scale
+  rotate_min: -10  # minimum random rotate
+  rotate_max: 10  # maximum random rotate
+  zoom_factor: 8  # zoom factor for final prediction during training, be in [1, 2, 4, 8]
+  ignore_label: 255
+  aux_weight: 0.4
+  workers: 16  # data loader workers
+  batch_size: 16  # batch size for training
+  batch_size_val: 8  # batch size for validation during training, memory and speed tradeoff
+  base_lr: 0.01
+  epochs: 50
+  power: 0.9
+  momentum: 0.9
+  weight_decay: 0.0001
+  manual_seed: 0
+  print_freq: 10
+  val_freq: 1
+  save_path: exp/ade20k/pspnet50/model
+  weight: imagenet 
+  index_split: 5
+  exp_name: test
+
+
+################################################################################
+# dataset parameters
+################################################################################
+dataset:
+  data_root: '/rhome/jhou/data/dataset/scannet/rgbd/'
+  classes: 20
+ 
+
+################################################################################
+# slurm parameters
+################################################################################
+defaults:
+  - hydra/launcher: submitit_slurm
+  - hydra/hydra_logging: colorlog
+
+hydra:
+  run:
+    dir: ${train.log_dir}
+  sweep:
+    dir: ${train.log_dir}
+  launcher:
+    partition: debug
+    submitit_folder: ${hydra.sweep.dir}/.submitit/%j
+    name: ${hydra.job.name}
+    timeout_min: 4320
+    cpus_per_task: 8
+    gpus_per_node: 1
+    exclude: moria
+    tasks_per_node: 1
+    mem_gb: 32
+    nodes: 1
+    comment: CriticalExp
+    max_num_timeout: 3
