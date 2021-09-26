@@ -82,9 +82,6 @@ class ScanNet(Dataset):
         self.label_size = (self.image_size[0] // 1, self.image_size[1] // 1)
         current_file_path = os.path.dirname(os.path.abspath(__file__))
 
-        import ipdb
-        ipdb.set_trace()
-
         scene_ids = read_txt(os.path.join(current_file_path, self.SPLITS[phase]))
         self.image_ids = []
         for scene_id in scene_ids:
