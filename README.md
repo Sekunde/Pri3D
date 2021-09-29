@@ -99,7 +99,7 @@ python kitti_process.py --input /path/to/kitti/dataset
 ```
 
 ### Pre-training on Different Datasets
-To pre-train on different datasets, we provide the scripts to train Pri3D with 8 GPUs (batch_size=32, 4 per GPU) on a single server under folder **pretrain/pri3d/scripts**. The code is competitable with [facebook hydra](https://hydra.cc). Our codebase enables multi-gpu training with distributed data parallel (DDP) module in pytorch.
+To pre-train on different datasets, we provide the scripts to train Pri3D with 8 GPUs (batch_size=64, 8 per GPU) on a single server under folder **pretrain/pri3d/scripts**. Pri3D can also be pre-trained on the server with fewer GPUs, e.g. 4 GPUs by setting train.batsh_size=32 (8 per GPUs) and optimizer.accumulate_step=2 (effective batch_size=32x2=64) to accumulate gradients. The code is competitable with [facebook hydra](https://hydra.cc). Our codebase enables multi-gpu training with distributed data parallel (DDP) module in pytorch.
 
 #### Pre-train on ScanNet
 

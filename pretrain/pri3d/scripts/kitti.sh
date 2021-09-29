@@ -1,6 +1,6 @@
 #!/bin/bash
 python main.py \
-    train.batch_size=32 \
+    train.batch_size=64 \
     train.phase=train \
     train.report_epoch=1 \
 	train.workers=4 \

@@ -1,6 +1,6 @@
 #!/bin/bash
 python main.py \
-    train.batch_size=2 \
+    train.batch_size=64 \
     train.phase=train \
     train.report_epoch=1 \
 	train.workers=4 \
@@ -23,4 +23,4 @@ python main.py \
     pretrain.view_invariant=True \
     pretrain.geometric_prior=False \
     pretrain.depth=True \
-    distributed.num_gpus=1 \
+    distributed.num_gpus=8 \
