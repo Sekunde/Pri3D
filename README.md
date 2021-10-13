@@ -71,7 +71,7 @@ For pre-training geometric-prior, we first generate **point cloud of ScanNet rec
 ```
 # Edit path variables: SCANNET_DATA and SCANNET_OUT_PATH
 cd pretrain/data_preprocess/scannet
-python scannet.py --input SCANNET_DATA --output SCANNET_OUT_PATH
+python collect_indoor3d_data.py --input SCANNET_DATA --output SCANNET_OUT_PATH
 # copy the filelists
 cp -r split SCANNET_OUT_PATH
 ```
@@ -79,7 +79,7 @@ cp -r split SCANNET_OUT_PATH
 Afterwards, we further generate **chunk bbox** that is used for cropping chunks by running following code. TARGET points to where the previously generated pairs of ScanNet frames are located.
 ```
 cd pretrain/data_preprocess/scannet/
-python chunk --base TARGET
+python chunk.py --base TARGET
 ```
 
 #### Prepare MegaDepth Pre-training Data
