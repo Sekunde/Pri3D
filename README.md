@@ -210,6 +210,8 @@ The provided pre-trained models for PSPNet and DeepLabV3/V3+ are already convert
 | Training Data  | mIoU (val) | Backbone   |Pre-trained Model (on ScanNet)                         | Curves                          | Logs                 |
 |----------------|------------|------------|-------------------------------------------------------|---------------------------------|----------------------|
 | 100% scenes    | 61.7       | ResNet50   | [Pri3D (View + Geo)][SNCombineBS64LR01EP5IM240RN50]   | [link][ScanNetSem100ResNet50]   |[link][SNSemRN50Log]  |
+| 100% scenes    | 61.3       | ResNet50   | [Pri3D (View)][SNViewBS64LR01EP5IM240RN50]            | None                            |None                  |
+| 100% scenes    | 61.1       | ResNet50   | [Pri3D (Geo)][SNGeoBS64LR01EP5IM240RN50]              | [link][ScanNetSem100ResNet50]   |[link][SNGeoSemRN50Log]|
 | 100% scenes    | 55.7       | ResNet18   | [Pri3D (View + Geo)][SNCombineBS64LR01EP5IM240RN18]   | [link][ScanNetSem100ResNet18]   |[link][SNSemRN18Log]  |
 | 100% scenes    | 62.8       | PSPNet	   | [Pri3D (View + Geo)][SNCombineBS64LR01EP5IM240RN50TV] | [link][ScanNetSem100PSPNet]     |[link][SNSemPSPLog]   |
 | 100% scenes    | 61.3       | DeepLabV3  | [Pri3D (View + Geo)][SNCombineBS64LR01EP5IM240RN50TV] | [link][ScsanNetSem100DeepLabV3] |[link][SNSemDLLog]    |
@@ -420,6 +422,8 @@ The provided pre-trained models in the following are already converted to Detect
 Pri3D is relased under the MIT License. See the LICENSE file for more details.
 
 [SNCombineBS64LR01EP5IM240RN50]: https://drive.google.com/file/d/1Whlny5aSH5tqD2Xe79Q7uUP1QD78Wj8t/view?usp=sharing
+[SNViewBS64LR01EP5IM240RN50]: https://drive.google.com/file/d/1zdzny9QrJBYsVkrp_GUptsuByaaEWvAT/view?usp=sharing
+[SNGeoBS64LR01EP5IM240RN50]: https://drive.google.com/file/d/10gDszrYxy-6JiCkWKs196cLHunW4ucI4/view?usp=sharing
 [SNCombineBS64LR01EP5IM240RN18]: https://drive.google.com/file/d/1mnDYe-NqC81M71G0ka_wnpJEVZQ3TiVd/view?usp=sharing
 [SNCombineBS64LR01EP5IM240RN50TV]: https://drive.google.com/file/d/1nKng03DqkjREi9_mr2yQ-6uugIIzNzGm/view?usp=sharing
 [KITTIViewBS64LR001EP10IM180RN50]: https://drive.google.com/file/d/1npnW7dzhPpT_2FZGte9iT6vQiDBvEXUo/view?usp=sharing
@@ -432,6 +436,7 @@ Pri3D is relased under the MIT License. See the LICENSE file for more details.
 [ViewDetectron2LR001]: https://drive.google.com/file/d/1dtjHrjddramxFLXghjIeeNJYcD0RlhOu/view?usp=sharing
 
 [SNSemRN50Log]: http://kaldir.vc.in.tum.de/3dsis/pri3d/logs/semseg/ScanNet_ScanNetCombine_BatchSize64_LearningRate01_Epoch5_ImageSize240x320_ResNet50.txt
+[SNGeoSemRN50Log]: http://kaldir.vc.in.tum.de/3dsis/pri3d/logs/semseg/ScanNet_ScanNetGeo_BatchSize64_LearningRate01_Epoch5_ImageSize240x320_ResNet50.txt
 [SNSemRN18Log]: http://kaldir.vc.in.tum.de/3dsis/pri3d/logs/semseg/ScanNet_ScanNetCombine_BatchSize64_LearningRate01_Epoch5_ImageSize240x320_ResNet18.txt
 [SNSemPSPLog]: http://kaldir.vc.in.tum.de/3dsis/pri3d/logs/semseg/ScanNetPSPNet_ScanNetCombine_BatchSize64_LearningRate01_Epoch5_ImageSize240x320_ResNet50.txt
 [SNSemDLLog]: http://kaldir.vc.in.tum.de/3dsis/pri3d/logs/semseg/ScanNetDeepLabV3_ScanNetCombine_BatchSize64_LearningRate01_Epoch5_ImageSize240x320_ResNet50.txt
