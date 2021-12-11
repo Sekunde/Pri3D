@@ -207,7 +207,7 @@ python pri3d_to_torchvision.py /path/to/pre-trained/pri3d/checkpoint /path/to/ou
 ```
 The provided pre-trained models for PSPNet and DeepLabV3/V3+ are already converted to torchvision format.
 
-| Training Data  | mIoU (val) | Backbone   |Pre-trained Model (on ScanNet)                         | Curves                          | Logs                 |
+| Training Data  | mIoU (val) | Backbone   |Pre-trained Model (for Initialization)                 | Curves                          | Logs                 |
 |----------------|------------|------------|-------------------------------------------------------|---------------------------------|----------------------|
 | 100% scenes    | 61.7       | ResNet50   | [Pri3D (View + Geo)][SNCombineBS64LR01EP5IM240RN50]   | [link][ScanNetSem100ResNet50]   |[link][SNSemRN50Log]  |
 | 100% scenes    | 61.3       | ResNet50   | [Pri3D (View)][SNViewBS64LR01EP5IM240RN50]            | None                            |None                  |
@@ -248,7 +248,7 @@ LOG_DIR=/path/to/log/folder BACKBONE=Res18UNet INIT=imagenet scripts/kitti.sh
 ```
 
 #### Model Zoo
-| Training Data  | mIoU (val) | Backbone   |Pre-trained Model                                       | Curves                  | Logs                   | 
+| Training Data  | mIoU (val) | Backbone   |Pre-trained Model (for Initialization))                 | Curves                  | Logs                   | 
 |----------------|------------|------------|--------------------------------------------------------|-------------------------|------------------------|
 | 100% scenes    | 33.2       | ResNet50   | [Pri3D (View) on KITTI][KITTIViewBS64LR001EP10IM240RN50] | [link][KITTISemCurves]  |[link][KITTISemLogPri3D]|
 
@@ -270,7 +270,7 @@ LOG_DIR=/path/to/log/folder BACKBONE=Res18UNet INIT=imagenet scripts/nyuv2.sh
 
 #### Model Zoo
 
-| Training Data  | mIoU (val) | Backbone   |Pre-trained Model (on ScanNet)                        | Curves                |  Logs                 | 
+| Training Data  | mIoU (val) | Backbone   |Pre-trained Model (for Initialization))               | Curves                |  Logs                 | 
 |----------------|------------|------------|------------------------------------------------------|-----------------------|-----------------------|
 | 100% scenes    | 54.7       | ResNet50   | [Pri3D (View + Geo)][SNCombineBS64LR001EP5IM240RN50]  | [link][NYUSemCurves]  |[link][NYUSemLogPri3D]|
 | 100% scenes    | 47.6       | ResNet50   | [MoCoV2-supIN->SN][SNMoCoV2BS256LR003EP100RN50]      | [link][NYUSemCurves]  |[link][NYUSemLogMoCo] |
@@ -341,7 +341,7 @@ ptthon torchvision_to_detectron.py /path/to//torchvison/format/checkpoint /path/
 ```
 The provided pre-trained models in the following are already converted to detectron2 checkpoints.
 
-|          Data  |  AP@0.5 (bbox)|  AP@0.5 (segm) | Backbone |Pre-trained Model (on ScanNet)         | Curves                 | Logs                      | 
+|          Data  |  AP@0.5 (bbox)|  AP@0.5 (segm) | Backbone |Pre-trained Model (for Initialization))   | Curves                 | Logs                      | 
 |----------------|---------------|----------------|----------|---------------------------------------|------------------------|---------------------------|
 | 100%           | 44.5          |35.8            | ResNet50 |[Pri3D (View + Geo)][CombineDetectron2LR01]|[link][ScanNetInsCurves]|[link][ScanNetInsLogPri3D] |
 | 100%           | 43.5          |33.9            | ResNet50 |[MoCoV2-supIN->SN][MoCoV2Detectron2]   |[link][ScanNetInsCurves]|[link][ScanNetInsLogMoCoV2]|
@@ -403,7 +403,7 @@ LOG_DIR=/path/to/log/folder INIT=/path/to/model sbatch script/train_coco.sh
 
 The provided pre-trained models in the following are already converted to Detectron2 checkpoints ([convert to detectron2](#model-zoo-4) shows how to convert from Pri3D checkpoint to Detectron2 format).
 
-|    Data        | AP@0.5 (bbox) | AP@0.5 (segm)  | Backbone |Pre-trained Model (on ScanNet)          | Curves                | Logs                  |
+|    Data        | AP@0.5 (bbox) | AP@0.5 (segm)  | Backbone |Pre-trained Model (for Initialization)  | Curves                | Logs                  |
 |----------------|---------------|----------------|----------|----------------------------------------|-----------------------|-----------------------|
 | 100%           | 60.6          |      57.5      | ResNet50 |[Pri3D (View)][ViewDetectron2LR001]     |[link][COCOInsCurves]  |[link][COCOInsLogPri3D]|
 
