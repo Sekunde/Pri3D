@@ -297,7 +297,7 @@ LOG_DIR=/path/to/log/folder BACKBONE=Res50UNet INIT=/path/to/saved/model scripts
 LOG_DIR=/path/to/log/folder BACKBONE=Res18UNet INIT=imagenet scripts/cityscapes.sh
 ```
 #### Model Zoo
-| Training Data  | mIoU (val) | Backbone   |Pre-trained Model                                        | Curves              |  Logs                 |
+| Training Data  | mIoU (val) | Backbone   |Pre-trained Model (for Initialization)                   | Curves              |  Logs                 |
 |----------------|------------|------------|---------------------------------------------------------|---------------------|-----------------------|
 | 100% scenes    | 56.3       | ResNet50   | [Pri3D (View) on KITTI][KITTIViewBS64LR001EP10IM180RN50]  |[link][CitySemCurves]|[link][CitySemLogKITTI]|
 | 100% scenes    | 55.2       | ResNet50   | [Pri3D (View) on MegaDepth][MDViewBS64LR001EP5IM180RN50]|[link][CitySemCurves]|[link][CitySemLogMD] |
@@ -372,7 +372,7 @@ LOG_DIR=/path/to/log/folder INIT=/path/to/model sbatch script/train_nyu.sh
 
 The provided pre-trained models in the following are already converted to Detectron2 checkpoints ([convert to detectrion2](#model-zoo-4) shows how to convert from Pri3D checkpoint to Detectron2 format). 
 
-|          Data  |  AP@0.5 (bbox)|  AP@0.5 (segm) | Backbone |Pre-trained Model (on ScanNet)              | Curves              | Logs                   |
+|          Data  |  AP@0.5 (bbox)|  AP@0.5 (segm) | Backbone |Pre-trained Model (for Initialization)      | Curves              | Logs                   |
 |----------------|---------------|----------------|----------|--------------------------------------------|---------------------|------------------------|
 | 100%           | 34.0          |      29.5      | ResNet50 | [Pri3D (View + Geo)][CombineDetectron2LR01]|[link][NYUInsCurves] |[link][NYUInsLogPri3D]  |
 | 100%           | 31.1          |      27.2      | ResNet50 | [MoCoV2-supIN->SN][MoCoV2Detectron2]       |[link][NYUInsCurves] |[link][NYUInsLogMoCoV2] |
