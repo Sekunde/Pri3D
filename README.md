@@ -205,7 +205,7 @@ PSPNet and DeepLabV3/V3+ use checkpoints in torchvision format, thus we provide 
 cd downstream/conversion
 python pri3d_to_torchvision.py /path/to/pre-trained/pri3d/checkpoint /path/to/output/checkpoint/in/torchvison/format
 ```
-The provided pre-trained models for PSPNet and DeepLabV3/V3+ are already converted to torchvision format.
+The provided pre-trained models for PSPNet and DeepLabV3/V3+ are already converted to torchvision format. If not specifically mentioned, models are pre-trained on ScanNet by default.
 
 | Training Data  | mIoU (val) | Backbone   |Pre-trained Model (for Initialization)                 | Curves                          | Logs                 |
 |----------------|------------|------------|-------------------------------------------------------|---------------------------------|----------------------|
@@ -248,6 +248,7 @@ LOG_DIR=/path/to/log/folder BACKBONE=Res18UNet INIT=imagenet scripts/kitti.sh
 ```
 
 #### Model Zoo
+
 | Training Data  | mIoU (val) | Backbone   |Pre-trained Model (for Initialization)                 | Curves                  | Logs                   | 
 |----------------|------------|------------|--------------------------------------------------------|-------------------------|------------------------|
 | 100% scenes    | 33.2       | ResNet50   | [Pri3D (View) on KITTI][KITTIViewBS64LR001EP10IM240RN50] | [link][KITTISemCurves]  |[link][KITTISemLogPri3D]|
@@ -269,6 +270,7 @@ LOG_DIR=/path/to/log/folder BACKBONE=Res18UNet INIT=imagenet scripts/nyuv2.sh
 ```
 
 #### Model Zoo
+If not specifically mentioned, models are pre-trained on ScanNet by default.
 
 | Training Data  | mIoU (val) | Backbone   |Pre-trained Model (for Initialization)               | Curves                |  Logs                 | 
 |----------------|------------|------------|------------------------------------------------------|-----------------------|-----------------------|
@@ -297,6 +299,8 @@ LOG_DIR=/path/to/log/folder BACKBONE=Res50UNet INIT=/path/to/saved/model scripts
 LOG_DIR=/path/to/log/folder BACKBONE=Res18UNet INIT=imagenet scripts/cityscapes.sh
 ```
 #### Model Zoo
+If not specifically mentioned, models are pre-trained on ScanNet by default.
+
 | Training Data  | mIoU (val) | Backbone   |Pre-trained Model (for Initialization)                   | Curves              |  Logs                 |
 |----------------|------------|------------|---------------------------------------------------------|---------------------|-----------------------|
 | 100% scenes    | 56.3       | ResNet50   | [Pri3D (View) on KITTI][KITTIViewBS64LR001EP10IM180RN50]  |[link][CitySemCurves]|[link][CitySemLogKITTI]|
@@ -339,7 +343,7 @@ cd downstream/conversion
 python pri3d_to_torchvision.py /path/to/pri3d/format/checkpoint /path/to//torchvison/format/checkpoint
 ptthon torchvision_to_detectron.py /path/to//torchvison/format/checkpoint /path/to/detectron/format/checkpoint
 ```
-The provided pre-trained models in the following are already converted to detectron2 checkpoints.
+The provided pre-trained models in the following are already converted to detectron2 checkpoints. If not specifically mentioned, models are pre-trained on ScanNet by default.
 
 |          Data  |  AP@0.5 (bbox)|  AP@0.5 (segm) | Backbone |Pre-trained Model (for Initialization)   | Curves                 | Logs                      | 
 |----------------|---------------|----------------|----------|---------------------------------------|------------------------|---------------------------|
@@ -370,7 +374,7 @@ LOG_DIR=/path/to/log/folder INIT=/path/to/model sbatch script/train_nyu.sh
 
 #### Model Zoo
 
-The provided pre-trained models in the following are already converted to Detectron2 checkpoints ([convert to detectrion2](#model-zoo-4) shows how to convert from Pri3D checkpoint to Detectron2 format). 
+The provided pre-trained models in the following are already converted to Detectron2 checkpoints ([convert to detectrion2](#model-zoo-4) shows how to convert from Pri3D checkpoint to Detectron2 format). If not specifically mentioned, models are pre-trained on ScanNet by default.
 
 |          Data  |  AP@0.5 (bbox)|  AP@0.5 (segm) | Backbone |Pre-trained Model (for Initialization)      | Curves              | Logs                   |
 |----------------|---------------|----------------|----------|--------------------------------------------|---------------------|------------------------|
@@ -401,7 +405,7 @@ LOG_DIR=/path/to/log/folder INIT=/path/to/model sbatch script/train_coco.sh
 ```
 #### Model Zoo
 
-The provided pre-trained models in the following are already converted to Detectron2 checkpoints ([convert to detectron2](#model-zoo-4) shows how to convert from Pri3D checkpoint to Detectron2 format).
+The provided pre-trained models in the following are already converted to Detectron2 checkpoints ([convert to detectron2](#model-zoo-4) shows how to convert from Pri3D checkpoint to Detectron2 format). If not specifically mentioned, models are pre-trained on ScanNet by default.
 
 |    Data        | AP@0.5 (bbox) | AP@0.5 (segm)  | Backbone |Pre-trained Model (for Initialization)  | Curves                | Logs                  |
 |----------------|---------------|----------------|----------|----------------------------------------|-----------------------|-----------------------|
