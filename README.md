@@ -249,6 +249,8 @@ LOG_DIR=/path/to/log/folder BACKBONE=Res18UNet INIT=imagenet scripts/kitti.sh
 
 #### Model Zoo
 
+If not specifically mentioned, models are pre-trained on ScanNet by default.
+
 | Training Data  | mIoU (val) | Backbone   |Pre-trained Model (for Initialization)                 | Curves                  | Logs                   | 
 |----------------|------------|------------|--------------------------------------------------------|-------------------------|------------------------|
 | 100% scenes    | 33.2       | ResNet50   | [Pri3D (View) on KITTI][KITTIViewBS64LR001EP10IM240RN50] | [link][KITTISemCurves]  |[link][KITTISemLogPri3D]|
